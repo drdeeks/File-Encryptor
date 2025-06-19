@@ -30,22 +30,22 @@ npm run package         # Creates app folder
 ### **Step 2: Choose Distribution Format**
 
 #### **Option A: Windows Installer (Recommended)**
-- **File**: `out/make/squirrel.windows/x64/File-Encryptor-GUI-Setup.exe`
+- **File**: `out/make/squirrel.windows/x64/File-Encryptor-Setup.exe`
 - **Size**: ~200MB
 - **Best for**: General distribution, automatic updates
 - **User experience**: Double-click to install, appears in Start Menu
 
 #### **Option B: Portable ZIP**
-- **File**: `out/File-Encryptor-GUI-Portable.zip`
+- **File**: `out/File-Encryptor-Portable.zip`
 - **Size**: ~200MB compressed
 - **Best for**: USB drives, no-install environments
-- **User experience**: Extract and run `file-encryptor-gui.exe`
+- **User experience**: Extract and run `File-Encryptor.exe`
 
 #### **Option C: App Folder**
 - **Folder**: `out/File Encryptor GUI-win32-x64/`
 - **Size**: ~230MB uncompressed
 - **Best for**: Development, testing
-- **User experience**: Run `file-encryptor-gui.exe` directly
+- **User experience**: Run `File-Encryptor.exe` directly
 
 ## 📋 Distribution Checklist
 

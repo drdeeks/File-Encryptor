@@ -1,5 +1,5 @@
 {
-  "name": "file-encryptor-gui",
+  "name": "File-Encryptor",
   "version": "1.0.0",
   "description": "A file encryptor with a side of dark humor. Because why not make securing your files a little more entertaining?",
   "main": "src/main.js",
@@ -26,7 +26,7 @@
     "react",
     "gui"
   ],
-  "author": "Your Name",
+  "author": "drdeeks",
   "license": "MIT",
   "dependencies": {
     "electron-is-dev": "^3.0.1",
@@ -56,7 +56,7 @@
     "forge": {
       "packagerConfig": {
         "name": "File Encryptor GUI",
-        "executableName": "file-encryptor-gui",
+        "executableName": "File-Encryptor",
         "productName": "File Encryptor GUI",
         "ignore": [
           "/src/gui",
@@ -67,21 +67,21 @@
           "/.prettierrc"
         ],
         "win32metadata": {
-          "CompanyName": "File Encryptor",
+          "CompanyName": "drdeeks",
           "FileDescription": "Secure file encryption with dark humor",
-          "OriginalFilename": "file-encryptor-gui.exe",
+          "OriginalFilename": "File-Encryptor.exe",
           "ProductName": "File Encryptor GUI",
-          "InternalName": "file-encryptor-gui"
+                      "InternalName": "File-Encryptor"
         }
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "file_encryptor_gui",
-            "authors": "File Encryptor Team",
+            "name": "File_Encryptor",
+            "authors": "drdeeks",
             "description": "Secure file encryption with a side of dark humor",
-            "setupExe": "File-Encryptor-GUI-Setup.exe",
+                          "setupExe": "File-Encryptor-Setup.exe",
             "noMsi": true
           }
         },
@@ -96,8 +96,8 @@
           "name": "@electron-forge/maker-deb",
           "config": {
             "options": {
-              "maintainer": "File Encryptor Team",
-              "homepage": "https://github.com/yourusername/file-encryptor-gui",
+              "maintainer": "drdeeks",
+              "homepage": "https://github.com/drdeeks/File-Encryptor",
               "description": "Secure file encryption with dark humor",
               "categories": [
                 "Utility",
@@ -111,7 +111,7 @@
           "config": {
             "options": {
               "license": "MIT",
-              "homepage": "https://github.com/yourusername/file-encryptor-gui",
+              "homepage": "https://github.com/drdeeks/File-Encryptor",
               "description": "Secure file encryption with dark humor",
               "categories": [
                 "Utility",
@@ -146,9 +146,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/file-encryptor-gui.git"
+    "url": "https://github.com/drdeeks/File-Encryptor.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/file-encryptor-gui/issues"
+    "url": "https://github.com/drdeeks/File-Encryptor/issues"
   }
 }

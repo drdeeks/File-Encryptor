@@ -30,7 +30,7 @@ Creates a proper Windows installer (.exe) that users can double-click to install
 ```bash
 npm run make-win
 ```
-Output: `out/make/squirrel.windows/x64/File-Encryptor-GUI-Setup.exe`
+Output: `out/make/squirrel.windows/x64/File-Encryptor-Setup.exe`
 
 ### 3. **Portable ZIP**
 Creates a compressed archive for portable use.
@@ -81,7 +81,7 @@ out/
 │   ├── squirrel.windows/                 # Windows installer
 │   ├── zip/                             # ZIP packages
 │   └── ...
-└── File-Encryptor-GUI-Portable.zip       # Manual portable version
+└── File-Encryptor-Portable.zip       # Manual portable version
 ```
 
 ## 🎯 Distribution Formats
@@ -164,7 +164,7 @@ Before building for distribution:
 
 ### For End Users
 Distribute the installer files:
-- **Windows**: `File-Encryptor-GUI-Setup.exe`
+- **Windows**: `File-Encryptor-Setup.exe`
 - **Linux**: `.deb` or `.rpm` files
 - **macOS**: `.dmg` file
 

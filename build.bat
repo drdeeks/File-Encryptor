@@ -95,7 +95,7 @@ if %errorlevel% neq 0 (
 echo.
 echo Creating ZIP archive...
 :: Create a simple zip using PowerShell
-powershell -command "Compress-Archive -Path 'out\File Encryptor GUI-win32-x64\*' -DestinationPath 'out\File-Encryptor-GUI-Portable.zip' -Force"
+powershell -command "Compress-Archive -Path 'out\File Encryptor GUI-win32-x64\*' -DestinationPath 'out\File-Encryptor-Portable.zip' -Force"
 if %errorlevel% neq 0 (
     echo ERROR: ZIP creation failed
     pause
@@ -103,7 +103,7 @@ if %errorlevel% neq 0 (
 )
 echo.
 echo ✓ Portable app created successfully!
-echo Check 'out\File-Encryptor-GUI-Portable.zip'
+echo Check 'out\File-Encryptor-Portable.zip'
 goto :success
 
 :make_all

@@ -92,8 +92,8 @@ A sophisticated desktop application for encrypting and managing your files with 
 ### Option 2: Manual Setup
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/file-encryptor-gui.git
-   cd file-encryptor-gui
+   git clone https://github.com/drdeeks/File-Encryptor.git
+   cd File-Encryptor
    ```
 
 2. **Install dependencies:**
@@ -332,8 +332,8 @@ npm run make-mac        # .dmg, .zip
 ```
 
 ### Distribution Files
-- **Windows**: `File-Encryptor-GUI-Setup.exe` (installer)
-- **Portable**: `File-Encryptor-GUI-Portable.zip`
+- **Windows**: `File-Encryptor-Setup.exe` (installer)
+- **Portable**: `File-Encryptor-Portable.zip`
 - **Linux**: `.deb` and `.rpm` packages
 - **macOS**: `.dmg` disk image
 

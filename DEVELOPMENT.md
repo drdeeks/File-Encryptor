@@ -23,7 +23,7 @@ npm run make    # Create distributable
 ## 📁 Project Structure
 
 ```
-file-encryptor-gui/
+File-Encryptor/
 ├── src/
 │   ├── main.js              # Electron main process
 │   ├── preload.js           # Preload script

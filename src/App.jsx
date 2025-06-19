@@ -14,7 +14,7 @@ function getRandomJoke() {
 }
 
 const initialHistory = [];
-const LOCAL_HISTORY_KEY = 'file-encryptor-history';
+const LOCAL_HISTORY_KEY = 'File-Encryptor-history';
 
 // Use window.electron.ipcRenderer in the renderer process
 const ipcRenderer = window.electron && window.electron.ipcRenderer ? window.electron.ipcRenderer : null;
@@ -442,7 +442,7 @@ const App = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `file-encryptor-history-${new Date().toISOString().slice(0,10)}.json`;
+            a.download = `File-Encryptor-history-${new Date().toISOString().slice(0,10)}.json`;
     document.body.appendChild(a);
     a.click();
     setTimeout(() => {
