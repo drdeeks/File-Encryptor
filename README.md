@@ -1,11 +1,11 @@
 # File Encryptor GUI
 
-A sophisticated yet darkly humorous desktop application for encrypting and managing your files. Built with Electron, React, and a healthy dose of existential dread.
+A sophisticated desktop application for encrypting and managing your files with a modern, user-friendly interface. Built with Electron, React, and Node.js, featuring AES-256-CBC encryption with a healthy dose of dark humor.
 
 ## 🔒 Features
 
 ### Core Encryption
-- **File Encryption**: Secure your files with AES-256-CBC encryption
+- **File Encryption**: Secure your files with AES-256-CBC encryption using scrypt key derivation
 - **Multiple File Handling Options**:
   - **Keep Original**: Preserve the original file (for the sentimental)
   - **Delete Original**: Remove the original file after encryption (no looking back)
@@ -30,156 +30,383 @@ A sophisticated yet darkly humorous desktop application for encrypting and manag
 - **Operation History**: Track your encryption activities
 - **Export/Import History**: Backup and restore your operation history
 
-## 🚀 Installation
+## 📁 Project Structure
+
+### Core Application Files
+
+#### **Main Application**
+- **`src/main.js`** - Electron main process that creates the application window and handles IPC communication
+- **`src/App.jsx`** - Main React component containing the UI logic and state management
+- **`src/preload.js`** - Security bridge between Electron main and renderer processes
+- **`src/index.js`** - Entry point that renders the React app
+
+#### **Encryption Engine**
+- **`src/encryption/encrypt.js`** - Core file encryption logic using AES-256-CBC with IV generation
+- **`src/encryption/decrypt.js`** - File decryption logic with path validation and error handling
+
+#### **Utilities**
+- **`src/utils/fileUtils.js`** - Utility functions for file operations (read, write, delete, validate)
+
+#### **UI Components & Styling**
+- **`src/styles.css`** - Main application styling with dark theme
+- **`src/gui/App.jsx`** - Additional GUI components (if needed)
+- **`src/gui/styles.css`** - GUI-specific styling
+- **`src/gui/index.js`** - GUI entry point
+
+### Build & Configuration Files
+
+#### **Build Scripts**
+- **`build.bat`** - Interactive Windows build script with menu options:
+  - Package creation (app folder)
+  - Windows installer (.exe setup)
+  - Portable ZIP creation
+  - Clean build folders
+- **`run-encryptor.bat`** - Quick launcher that installs dependencies and starts the app
+- **`package.json`** - Node.js project configuration with scripts and dependencies
+- **`webpack.config.js`** - Webpack bundling configuration for React components
+
+#### **Documentation**
+- **`README.md`** - This comprehensive guide
+- **`BUILD_INSTRUCTIONS.md`** - Detailed build and distribution instructions
+- **`DEVELOPMENT.md`** - Development setup and contribution guidelines
+- **`DISTRIBUTION_GUIDE.md`** - Guide for distributing the application
+- **`LICENSE`** - MIT license file
+
+#### **Assets & Resources**
+- **`assets/README.md`** - Guide for adding application icons
+- **`public/index.html`** - Main HTML template for the Electron renderer
+- **`public/static/`** - Compiled JavaScript and CSS files
+
+## 🚀 Installation & Quick Start
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
+- **Node.js** (v16 or higher) - Download from [nodejs.org](https://nodejs.org/)
+- **npm** (comes with Node.js)
+- **Windows 7/8/10/11** (for .bat scripts)
 
-### Setup
-1. Clone the repository:
+### Option 1: Quick Start (Windows)
+1. **Download/Clone** the project
+2. **Double-click** `run-encryptor.bat`
+3. Wait for automatic dependency installation and app launch
+
+### Option 2: Manual Setup
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/file-encryptor-gui.git
    cd file-encryptor-gui
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. Start the application:
+3. **Start the application:**
    ```bash
    npm start
    ```
 
-## 📖 Usage
+### Option 3: Development Mode
+```bash
+npm run dev
+```
 
-### Encrypting Files
-1. Launch the application
-2. Click "Choose File to Encrypt" or use the file dialog
-3. Enter a strong password (no, "password123" doesn't count)
-4. Select your preferred action for the original file
-5. Optionally choose a custom save location
-6. Click "Encrypt" and watch your secrets disappear into the digital void
+## 📖 How to Use the Application
 
-### Browsing & Managing Encrypted Files
-1. Switch to the "Browse Encrypted Files" tab
-2. Click "Browse Directory" to select a folder to scan
-3. View all `.enc` files in a modern grid layout
-4. Use search and sort functions to organize your encrypted collection
-5. Right-click files for rename, delete, or "show in folder" options
+### 🔐 Encrypting Files
 
-### Decrypting Files
-1. From the browse tab, select an encrypted file
-2. Enter the decryption password
-3. Click "Decrypt File"
-4. For uploaded files without proper paths, you'll be prompted to select the file location
-5. Your file will be restored to its original format
+1. **Launch the Application**
+   - Use `run-encryptor.bat` or `npm start`
+   - The app opens with a dark-themed interface
 
-### File Operations
-- **Rename**: Change the name of encrypted files
-- **Delete**: Permanently remove encrypted files
-- **Show in Folder**: Open the file location in your system file manager
-- **Drag & Drop**: Add `.enc` files by dragging them into the application
+2. **Select File to Encrypt**
+   - Click "Choose File to Encrypt" button
+   - Browse and select any file from your computer
+   - File path will be displayed
+
+3. **Set Encryption Password**
+   - Enter a strong password (minimum 8 characters recommended)
+   - Password is not stored - remember it!
+
+4. **Choose Original File Action**
+   - **Keep Original**: File remains unchanged after encryption
+   - **Delete Original**: Original file is deleted after encryption
+   - **Erase Traces**: Original file is overwritten with random data then deleted
+
+5. **Optional: Custom Output Location**
+   - Click "Choose Save Location" to specify where encrypted file goes
+   - If not specified, saves in same folder as original with `.enc` extension
+
+6. **Encrypt**
+   - Click "Encrypt File" button
+   - Watch progress and enjoy the dark humor quotes
+   - Success message shows location of encrypted file
+
+### 🔓 Decrypting Files
+
+#### Method 1: From Browser Tab
+1. **Switch to "Browse Encrypted Files" tab**
+2. **Browse Directory** containing `.enc` files
+3. **Select encrypted file** from the grid view
+4. **Enter decryption password**
+5. **Click "Decrypt File"**
+
+#### Method 2: Drag & Drop
+1. **Drag `.enc` files** into the browse area
+2. **Select uploaded file** from the list
+3. **Enter password and decrypt**
+
+### 📁 Managing Encrypted Files
+
+#### **Directory Scanning**
+- Click "Browse Directory" to scan folders for `.enc` files
+- Recursive scanning shows progress with directory count
+- Results display in a modern grid layout
+
+#### **File Operations**
+- **Right-click** files for context menu:
+  - **Rename**: Change file name
+  - **Delete**: Permanently remove file
+  - **Show in Folder**: Open file location in Windows Explorer
+
+#### **Search & Sort**
+- **Search**: Type in search box to filter by filename
+- **Sort**: Click column headers to sort by name, date, or size
+- **View**: Grid layout shows file details and thumbnails
+
+### ⚙️ Application Settings
+
+#### **UI Scaling**
+- Use zoom controls to adjust interface size (80% - 150%)
+- Perfect for different screen sizes and accessibility needs
+
+#### **History Management**
+- View encryption/decryption history in the History tab
+- Export history to JSON file for backup
+- Import previously exported history
 
 ## 🛠️ Development
 
-### Build Commands
+### Development Scripts
 ```bash
-# Development build
-npm run build:dev
-
-# Production build
-npm run build
-
-# Start in development mode
+# Start in development mode (with hot reload)
 npm run dev
+
+# Build for production
+npm run build
 
 # Create distributable packages
 npm run make
+
+# Platform-specific builds
+npm run make-win    # Windows
+npm run make-linux  # Linux
+npm run make-mac    # macOS
+
+# Clean build folders
+npm run clean
 ```
 
-### Project Structure
-```
-src/
-├── App.jsx                 # Main React application
-├── main.js                 # Electron main process
-├── preload.js             # Electron preload script
-├── encryption/
-│   ├── encrypt.js         # File encryption logic
-│   └── decrypt.js         # File decryption logic
-├── gui/                   # Additional GUI components
-└── utils/                 # Utility functions
-```
+### Build Targets
+- **Package**: Creates app folder (fastest, for testing)
+- **Installer**: Creates `.exe` setup file (recommended for distribution)
+- **Portable**: Creates `.zip` archive (no installation required)
 
-### Technologies Used
-- **Electron**: Desktop application framework
-- **React**: UI library
-- **Node.js**: Runtime environment
-- **Webpack**: Module bundler
-- **Crypto**: Built-in Node.js cryptography
+### Development Environment
+- **Electron Forge**: Build and packaging system
+- **React**: UI framework with hooks
+- **Webpack**: Module bundling
+- **Node.js**: Core runtime for encryption and file operations
 
-## 🔧 Configuration
+### File Watcher & Hot Reload
+Development mode includes:
+- Automatic React component reloading
+- Console logging for debugging
+- DevTools access for inspection
 
-### Build Configuration
-The application uses Electron Forge for building and packaging. Configuration files:
-- `webpack.config.js` - Webpack bundling configuration
-- `package.json` - Application metadata and scripts
+## 🔧 Technical Details
 
-### Environment Variables
-- Development builds include debugging capabilities
-- Production builds are optimized and minified
+### Encryption Specifications
+- **Algorithm**: AES-256-CBC (Advanced Encryption Standard)
+- **Key Derivation**: scrypt with salt
+- **IV**: Random 16-byte initialization vector per file
+- **File Format**: `[16-byte IV][encrypted content]`
+
+### Security Features
+- Passwords never stored or logged
+- Cryptographically secure random IV generation
+- Memory-safe password handling
+- Secure file deletion options with data overwriting
+
+### Error Handling
+- Comprehensive error messages for user guidance
+- Graceful handling of file permission issues
+- Recovery suggestions for common problems
+- Detailed logging in development mode
 
 ## 🐛 Troubleshooting
 
-### Common Issues
+### Common Issues & Solutions
 
-**"Invalid or missing file path" error during decryption:**
-- This usually occurs with uploaded files. The app will automatically prompt you to select the correct file location.
+#### **"Node.js not found" Error**
+- **Problem**: Node.js not installed or not in system PATH
+- **Solution**: Download and install from [nodejs.org](https://nodejs.org/)
+- **Verify**: Run `node --version` in command prompt
 
-**Application won't close properly:**
-- Fixed in recent versions. The app now properly handles window closing and process termination.
+#### **"npm install" Fails**
+- **Problem**: Network issues or permission errors
+- **Solutions**:
+  ```bash
+  # Clear npm cache
+  npm cache clean --force
+  
+  # Use different registry
+  npm install --registry https://registry.npmjs.org/
+  
+  # Run as administrator (Windows)
+  ```
 
-**Files not appearing in directory scan:**
-- Ensure you have proper read permissions for the selected directory
-- Check that the files have the `.enc` extension
+#### **Application Won't Start**
+- **Problem**: Missing dependencies or build issues
+- **Solutions**:
+  ```bash
+  # Reinstall dependencies
+  rm -rf node_modules
+  npm install
+  
+  # Rebuild native modules
+  npm run build
+  ```
+
+#### **"Invalid or missing file path" During Decryption**
+- **Problem**: File path validation issues with uploaded files
+- **Solution**: Use "Browse Directory" instead of drag & drop, or reselect file when prompted
+
+#### **Files Not Appearing in Directory Scan**
+- **Problem**: Permission issues or incorrect file extensions
+- **Solutions**:
+  - Ensure files have `.enc` extension
+  - Check read permissions for selected directory
+  - Try scanning a different directory
+
+#### **Encryption/Decryption Fails**
+- **Problem**: Disk space, permissions, or corrupted files
+- **Solutions**:
+  - Check available disk space
+  - Verify file isn't currently open in another program
+  - Try different output location
+  - Check file integrity
 
 ### Debug Mode
-Run with debugging enabled:
+Enable verbose logging:
 ```bash
+# Development mode with debug output
 npm run dev
+
+# Check console for detailed error messages
+# Look for red error text in terminal
 ```
 
-This provides console output for troubleshooting encryption/decryption operations.
+### Performance Optimization
+- **Large Files**: Encryption/decryption is streaming-based for memory efficiency
+- **Directory Scanning**: Progress updates prevent UI freezing
+- **UI Responsiveness**: Background processing with IPC communication
 
-## 📝 License
+## 📦 Building for Distribution
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Windows Distribution
+```bash
+# Interactive build menu
+build.bat
+
+# Command line options
+npm run make-win        # Creates installer
+npm run package         # Creates app folder
+```
+
+### Cross-Platform Building
+```bash
+# Requires appropriate OS or virtualization
+npm run make-linux      # .deb, .rpm, .zip
+npm run make-mac        # .dmg, .zip
+```
+
+### Distribution Files
+- **Windows**: `File-Encryptor-GUI-Setup.exe` (installer)
+- **Portable**: `File-Encryptor-GUI-Portable.zip`
+- **Linux**: `.deb` and `.rpm` packages
+- **macOS**: `.dmg` disk image
+
+## 🔒 Security Considerations
+
+### Password Security
+- **Use strong passwords** (12+ characters, mixed case, numbers, symbols)
+- **Never reuse passwords** from other accounts
+- **Consider password managers** for generation and storage
+- **Remember**: Lost passwords = lost files (no recovery possible)
+
+### File Handling Best Practices
+- **Test decryption** immediately after encryption
+- **Backup important files** before encryption
+- **Use "Erase Traces"** for sensitive data
+- **Store encrypted files** in secure locations
+
+### System Security
+- **Keep system updated** for latest security patches
+- **Use antivirus software** (app may trigger false positives)
+- **Secure your computer** with login passwords
+- **Regular backups** of encrypted files
+
+## 📝 License & Legal
+
+This project is licensed under the **MIT License** - see the `LICENSE` file for details.
+
+### Third-Party Licenses
+- **Electron**: MIT License
+- **React**: MIT License
+- **Node.js**: Node.js License (MIT-style)
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Development Setup
+1. **Fork the repository**
+2. **Create feature branch**: `git checkout -b feature/amazing-feature`
+3. **Make changes** and test thoroughly
+4. **Follow code style** (see `DEVELOPMENT.md`)
+5. **Submit Pull Request** with clear description
 
-Please ensure your code follows the existing style and includes appropriate error handling.
+### Code Standards
+- Use ESLint configuration
+- Include error handling
+- Add comments for complex logic
+- Test on Windows, Linux, and macOS if possible
 
-## ⚠️ Security Notice
-
-- **Password Strength**: Use strong, unique passwords for encryption
-- **Key Storage**: Passwords are not stored by the application
-- **File Handling**: Original files can be securely deleted or overwritten based on your selection
-- **Encryption**: Uses AES-256-CBC with scrypt key derivation
+### Bug Reports
+Please include:
+- Operating system and version
+- Node.js version (`node --version`)
+- Steps to reproduce
+- Error messages
+- Screenshots if relevant
 
 ## 🎭 Acknowledgments
 
-- Thanks to the dark humor that keeps us coding through the existential dread
-- Built by developers who understand that sometimes you need to encrypt your feelings too
-- Remember: With great encryption power comes great password responsibility
+- **Dark humor** that keeps us coding through existential dread
+- **Security community** for encryption best practices
+- **Open source contributors** making desktop apps possible
+- **Coffee** ☕ and **late-night coding sessions** 🌙
 
 ---
 
-**Encrypt wisely, laugh darkly. 🔒💀**
+## ⚠️ Important Reminders
+
+- **🔑 Password Management**: This app does NOT store passwords. Write them down securely!
+- **🔒 Encryption Strength**: AES-256 is currently unbreakable with proper implementation
+- **💾 File Backups**: Always backup important files before encryption
+- **🛡️ Security**: Keep your system updated and use strong passwords
+
+---
+
+**Encrypt wisely, laugh darkly, and may your passwords be ever in your favor. 🔒💀**
+
+*Built by developers who understand that sometimes you need to encrypt your feelings too.*
