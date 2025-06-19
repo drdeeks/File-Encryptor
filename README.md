@@ -92,7 +92,7 @@ A sophisticated desktop application for encrypting and managing your files with 
 ### Option 2: Manual Setup
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/file-encryptor-gui.git
+   git clone https://github.com/drdeeks/file-encryptor-gui.git
    cd file-encryptor-gui
    ```
 
