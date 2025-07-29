@@ -1,412 +1,230 @@
-# File Encryptor GUI
+# File Encryptor v2.0 - Tauri Edition
 
-A sophisticated desktop application for encrypting and managing your files with a modern, user-friendly interface. Built with Electron, React, and Node.js, featuring AES-256-CBC encryption with a healthy dose of dark humor.
+A secure, modern file encryption application with dark humor, built with Tauri, Rust, and React.
 
-## 🔒 Features
+![File Encryptor](https://img.shields.io/badge/File%20Encryptor-v2.0-blue)
+![Tauri](https://img.shields.io/badge/Tauri-1.5-green)
+![Rust](https://img.shields.io/badge/Rust-2021-orange)
+![React](https://img.shields.io/badge/React-18-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-### Core Encryption
-- **File Encryption**: Secure your files with AES-256-CBC encryption using scrypt key derivation
-- **Multiple File Handling Options**:
-  - **Keep Original**: Preserve the original file (for the sentimental)
-  - **Delete Original**: Remove the original file after encryption (no looking back)
-  - **Erase Traces**: Overwrite and delete the original file (secret agent mode)
+## 🚀 Features
 
-### File Management & Browsing
-- **Directory Scanner**: Recursively scan directories for encrypted `.enc` files
-- **File Browser**: Modern interface for browsing and managing encrypted files
-- **Drag & Drop Support**: Drop `.enc` files directly into the application
-- **File Operations**: Rename, delete, and organize encrypted files
-- **Search & Sort**: Find files by name and sort by date, size, or name
+### 🔐 Security
+- **AES-256-GCM Encryption**: Military-grade authenticated encryption
+- **Argon2id Key Derivation**: Memory-hard password hashing with 100,000 iterations
+- **Secure Random Generation**: Cryptographically secure random number generation
+- **Integrity Verification**: SHA-256 integrity checks for encrypted data
+- **Memory Protection**: Secure memory handling with zeroization
+- **Compression Support**: Optional data compression for efficiency
 
-### Decryption & Recovery
-- **Smart Decryption**: Decrypt files with automatic output path detection
-- **File Path Validation**: Intelligent handling of uploaded vs. scanned files
-- **Progress Feedback**: Real-time scanning progress and operation status
+### 🎯 Enhanced Decryption
+- **Robust File Format Detection**: Intelligent encrypted file recognition
+- **Batch Decryption**: Process multiple files simultaneously
+- **Progress Tracking**: Real-time progress with time estimates
+- **Error Recovery**: Comprehensive error handling and recovery mechanisms
+- **Password Verification**: Test passwords without full decryption
+- **File Integrity Checks**: Verify encrypted file integrity
 
-### User Experience
-- **Dark Theme**: Easy on the eyes (and the soul)
-- **Custom Window Controls**: Frameless window with minimize, maximize, and close
-- **Scalable UI**: Adjustable interface scaling (80% - 150%)
-- **Operation History**: Track your encryption activities
-- **Export/Import History**: Backup and restore your operation history
+### 🎨 Modern UI/UX
+- **Dark Theme**: Beautiful dark interface with glass morphism effects
+- **Drag & Drop**: Intuitive file selection with visual feedback
+- **Real-time Progress**: Live progress indicators with contextual humor
+- **Responsive Design**: Works seamlessly across different screen sizes
+- **Accessibility**: Full keyboard navigation and screen reader support
+- **Cross-platform**: Native performance on Windows, macOS, and Linux
 
-## 📁 Project Structure
+### 😈 Dark Humor Integration
+- **Contextual Jokes**: Humor that appears during specific operations
+- **Progress Humor**: Entertaining messages during long operations
+- **Error Humor**: Light-hearted error messages to reduce frustration
+- **Success Humor**: Celebratory messages for completed operations
 
-### Core Application Files
+## 🛠️ Technology Stack
 
-#### **Main Application**
-- **`src/main.js`** - Electron main process that creates the application window and handles IPC communication
-- **`src/App.jsx`** - Main React component containing the UI logic and state management
-- **`src/preload.js`** - Security bridge between Electron main and renderer processes
-- **`src/index.js`** - Entry point that renders the React app
+### Backend (Rust)
+- **Tauri**: Cross-platform desktop application framework
+- **AES-GCM**: Authenticated encryption with associated data
+- **Argon2id**: Memory-hard password hashing
+- **Tokio**: Asynchronous runtime for non-blocking operations
+- **Memmap2**: Memory-mapped file operations for large files
+- **Walkdir**: Efficient directory traversal
 
-#### **Encryption Engine**
-- **`src/encryption/encrypt.js`** - Core file encryption logic using AES-256-CBC with IV generation
-- **`src/encryption/decrypt.js`** - File decryption logic with path validation and error handling
+### Frontend (React + TypeScript)
+- **React 18**: Modern React with hooks and concurrent features
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first CSS framework
+- **Lucide React**: Beautiful icon library
+- **React Hot Toast**: Elegant toast notifications
+- **React Dropzone**: Drag and drop file handling
 
-#### **Utilities**
-- **`src/utils/fileUtils.js`** - Utility functions for file operations (read, write, delete, validate)
-
-#### **UI Components & Styling**
-- **`src/styles.css`** - Main application styling with dark theme
-- **`src/gui/App.jsx`** - Additional GUI components (if needed)
-- **`src/gui/styles.css`** - GUI-specific styling
-- **`src/gui/index.js`** - GUI entry point
-
-### Build & Configuration Files
-
-#### **Build Scripts**
-- **`build.bat`** - Interactive Windows build script with menu options:
-  - Package creation (app folder)
-  - Windows installer (.exe setup)
-  - Portable ZIP creation
-  - Clean build folders
-- **`run-encryptor.bat`** - Quick launcher that installs dependencies and starts the app
-- **`package.json`** - Node.js project configuration with scripts and dependencies
-- **`webpack.config.js`** - Webpack bundling configuration for React components
-
-#### **Documentation**
-- **`README.md`** - This comprehensive guide
-- **`BUILD_INSTRUCTIONS.md`** - Detailed build and distribution instructions
-- **`DEVELOPMENT.md`** - Development setup and contribution guidelines
-- **`DISTRIBUTION_GUIDE.md`** - Guide for distributing the application
-- **`LICENSE`** - MIT license file
-
-#### **Assets & Resources**
-- **`assets/README.md`** - Guide for adding application icons
-- **`public/index.html`** - Main HTML template for the Electron renderer
-- **`public/static/`** - Compiled JavaScript and CSS files
-
-## 🚀 Installation & Quick Start
+## 📦 Installation
 
 ### Prerequisites
-- **Node.js** (v16 or higher) - Download from [nodejs.org](https://nodejs.org/)
-- **npm** (comes with Node.js)
-- **Windows 7/8/10/11** (for .bat scripts)
+- **Node.js** 18+ and **npm** 9+
+- **Rust** 1.70+ and **Cargo**
+- **Tauri CLI**: `npm install -g @tauri-apps/cli`
 
-### Option 1: Quick Start (Windows)
-1. **Download/Clone** the project
-2. **Double-click** `run-encryptor.bat`
-3. Wait for automatic dependency installation and app launch
+### Development Setup
 
-### Option 2: Manual Setup
-1. **Clone the repository:**
+1. **Clone the repository**
    ```bash
    git clone https://github.com/drdeeks/File-Encryptor.git
    cd File-Encryptor
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Start the application:**
+3. **Run in development mode**
    ```bash
-   npm start
+   npm run tauri:dev
    ```
 
-### Option 3: Development Mode
-```bash
-npm run dev
+### Building for Production
+
+1. **Build the application**
+   ```bash
+   npm run tauri:build
+   ```
+
+2. **Find the executable**
+   - **Windows**: `src-tauri/target/release/bundle/msi/`
+   - **macOS**: `src-tauri/target/release/bundle/dmg/`
+   - **Linux**: `src-tauri/target/release/bundle/appimage/`
+
+## 🔧 Usage
+
+### Encrypting Files
+1. **Select a file** using drag & drop or the file picker
+2. **Enter a strong password** (minimum 8 characters)
+3. **Choose an action** for the original file:
+   - Keep Original: Preserve the original file
+   - Delete Original: Remove the original file
+   - Erase Traces: Overwrite with random data before deletion
+4. **Click "Encrypt File"** and enjoy the dark humor
+
+### Decrypting Files
+1. **Select an encrypted file** (.enc extension)
+2. **Enter the password** (hope you remember it!)
+3. **Click "Decrypt File"** to restore your data
+
+### Managing Files
+1. **Choose a directory** to scan for encrypted files
+2. **Browse and search** through your encrypted files
+3. **Sort by name, date, or size** for easy organization
+4. **Quick actions**: Decrypt, show in folder, or delete files
+
+## 🔒 Security Features
+
+### Cryptographic Implementation
+- **Algorithm**: AES-256-GCM (Galois/Counter Mode)
+- **Key Derivation**: Argon2id with 100,000 iterations
+- **Memory Cost**: 64MB for memory-hard operations
+- **Salt Length**: 32 bytes of cryptographically secure random data
+- **Nonce**: 12 bytes for AES-GCM
+- **Authentication Tag**: 16 bytes for integrity verification
+
+### Security Best Practices
+- **Zeroization**: Sensitive data is securely cleared from memory
+- **Constant-time Operations**: Protection against timing attacks
+- **Input Validation**: Comprehensive validation of all inputs
+- **Error Handling**: Secure error messages that don't leak information
+- **File Permissions**: Proper handling of file system permissions
+
+### File Format
+```
+[8 bytes]  Magic Header: "FE2.0\0\0\0"
+[1024 bytes] Metadata (JSON with padding)
+[N bytes]  Encrypted Data
 ```
 
-## 📖 How to Use the Application
+## 🚨 Security Considerations
 
-### 🔐 Encrypting Files
+### Password Security
+- **Use strong passwords**: Minimum 8 characters, longer is better
+- **Don't reuse passwords**: Each file should have a unique password
+- **Store passwords securely**: Consider using a password manager
+- **Backup passwords**: Losing the password means losing the data forever
 
-1. **Launch the Application**
-   - Use `run-encryptor.bat` or `npm start`
-   - The app opens with a dark-themed interface
-
-2. **Select File to Encrypt**
-   - Click "Choose File to Encrypt" button
-   - Browse and select any file from your computer
-   - File path will be displayed
-
-3. **Set Encryption Password**
-   - Enter a strong password (minimum 8 characters recommended)
-   - Password is not stored - remember it!
-
-4. **Choose Original File Action**
-   - **Keep Original**: File remains unchanged after encryption
-   - **Delete Original**: Original file is deleted after encryption
-   - **Erase Traces**: Original file is overwritten with random data then deleted
-
-5. **Optional: Custom Output Location**
-   - Click "Choose Save Location" to specify where encrypted file goes
-   - If not specified, saves in same folder as original with `.enc` extension
-
-6. **Encrypt**
-   - Click "Encrypt File" button
-   - Watch progress and enjoy the dark humor quotes
-   - Success message shows location of encrypted file
-
-### 🔓 Decrypting Files
-
-#### Method 1: From Browser Tab
-1. **Switch to "Browse Encrypted Files" tab**
-2. **Browse Directory** containing `.enc` files
-3. **Select encrypted file** from the grid view
-4. **Enter decryption password**
-5. **Click "Decrypt File"**
-
-#### Method 2: Drag & Drop
-1. **Drag `.enc` files** into the browse area
-2. **Select uploaded file** from the list
-3. **Enter password and decrypt**
-
-### 📁 Managing Encrypted Files
-
-#### **Directory Scanning**
-- Click "Browse Directory" to scan folders for `.enc` files
-- Recursive scanning shows progress with directory count
-- Results display in a modern grid layout
-
-#### **File Operations**
-- **Right-click** files for context menu:
-  - **Rename**: Change file name
-  - **Delete**: Permanently remove file
-  - **Show in Folder**: Open file location in Windows Explorer
-
-#### **Search & Sort**
-- **Search**: Type in search box to filter by filename
-- **Sort**: Click column headers to sort by name, date, or size
-- **View**: Grid layout shows file details and thumbnails
-
-### ⚙️ Application Settings
-
-#### **UI Scaling**
-- Use zoom controls to adjust interface size (80% - 150%)
-- Perfect for different screen sizes and accessibility needs
-
-#### **History Management**
-- View encryption/decryption history in the History tab
-- Export history to JSON file for backup
-- Import previously exported history
-
-## 🛠️ Development
-
-### Development Scripts
-```bash
-# Start in development mode (with hot reload)
-npm run dev
-
-# Build for production
-npm run build
-
-# Create distributable packages
-npm run make
-
-# Platform-specific builds
-npm run make-win    # Windows
-npm run make-linux  # Linux
-npm run make-mac    # macOS
-
-# Clean build folders
-npm run clean
-```
-
-### Build Targets
-- **Package**: Creates app folder (fastest, for testing)
-- **Installer**: Creates `.exe` setup file (recommended for distribution)
-- **Portable**: Creates `.zip` archive (no installation required)
-
-### Development Environment
-- **Electron Forge**: Build and packaging system
-- **React**: UI framework with hooks
-- **Webpack**: Module bundling
-- **Node.js**: Core runtime for encryption and file operations
-
-### File Watcher & Hot Reload
-Development mode includes:
-- Automatic React component reloading
-- Console logging for debugging
-- DevTools access for inspection
-
-## 🔧 Technical Details
-
-### Encryption Specifications
-- **Algorithm**: AES-256-CBC (Advanced Encryption Standard)
-- **Key Derivation**: scrypt with salt
-- **IV**: Random 16-byte initialization vector per file
-- **File Format**: `[16-byte IV][encrypted content]`
-
-### Security Features
-- Passwords never stored or logged
-- Cryptographically secure random IV generation
-- Memory-safe password handling
-- Secure file deletion options with data overwriting
-
-### Error Handling
-- Comprehensive error messages for user guidance
-- Graceful handling of file permission issues
-- Recovery suggestions for common problems
-- Detailed logging in development mode
+### File Security
+- **Backup important files**: Always keep backups of critical data
+- **Test decryption**: Verify you can decrypt files after encryption
+- **Secure storage**: Store encrypted files in secure locations
+- **Regular updates**: Keep the application updated for security patches
 
 ## 🐛 Troubleshooting
 
-### Common Issues & Solutions
+### Common Issues
 
-#### **"Node.js not found" Error**
-- **Problem**: Node.js not installed or not in system PATH
-- **Solution**: Download and install from [nodejs.org](https://nodejs.org/)
-- **Verify**: Run `node --version` in command prompt
+**"File not found" error**
+- Ensure the file path is correct and accessible
+- Check file permissions on your system
 
-#### **"npm install" Fails**
-- **Problem**: Network issues or permission errors
-- **Solutions**:
-  ```bash
-  # Clear npm cache
-  npm cache clean --force
-  
-  # Use different registry
-  npm install --registry https://registry.npmjs.org/
-  
-  # Run as administrator (Windows)
-  ```
+**"Invalid password" error**
+- Double-check the password spelling and case
+- Ensure you're using the correct password for the file
 
-#### **Application Won't Start**
-- **Problem**: Missing dependencies or build issues
-- **Solutions**:
-  ```bash
-  # Reinstall dependencies
-  rm -rf node_modules
-  npm install
-  
-  # Rebuild native modules
-  npm run build
-  ```
+**"Permission denied" error**
+- Run the application with appropriate permissions
+- Check if the file is being used by another application
 
-#### **"Invalid or missing file path" During Decryption**
-- **Problem**: File path validation issues with uploaded files
-- **Solution**: Use "Browse Directory" instead of drag & drop, or reselect file when prompted
+**"Disk space insufficient" error**
+- Ensure you have enough free disk space
+- Encrypted files may be larger than the original
 
-#### **Files Not Appearing in Directory Scan**
-- **Problem**: Permission issues or incorrect file extensions
-- **Solutions**:
-  - Ensure files have `.enc` extension
-  - Check read permissions for selected directory
-  - Try scanning a different directory
-
-#### **Encryption/Decryption Fails**
-- **Problem**: Disk space, permissions, or corrupted files
-- **Solutions**:
-  - Check available disk space
-  - Verify file isn't currently open in another program
-  - Try different output location
-  - Check file integrity
-
-### Debug Mode
-Enable verbose logging:
-```bash
-# Development mode with debug output
-npm run dev
-
-# Check console for detailed error messages
-# Look for red error text in terminal
-```
-
-### Performance Optimization
-- **Large Files**: Encryption/decryption is streaming-based for memory efficiency
-- **Directory Scanning**: Progress updates prevent UI freezing
-- **UI Responsiveness**: Background processing with IPC communication
-
-## 📦 Building for Distribution
-
-### Windows Distribution
-```bash
-# Interactive build menu
-build.bat
-
-# Command line options
-npm run make-win        # Creates installer
-npm run package         # Creates app folder
-```
-
-### Cross-Platform Building
-```bash
-# Requires appropriate OS or virtualization
-npm run make-linux      # .deb, .rpm, .zip
-npm run make-mac        # .dmg, .zip
-```
-
-### Distribution Files
-- **Windows**: `File-Encryptor-Setup.exe` (installer)
-- **Portable**: `File-Encryptor-Portable.zip`
-- **Linux**: `.deb` and `.rpm` packages
-- **macOS**: `.dmg` disk image
-
-## 🔒 Security Considerations
-
-### Password Security
-- **Use strong passwords** (12+ characters, mixed case, numbers, symbols)
-- **Never reuse passwords** from other accounts
-- **Consider password managers** for generation and storage
-- **Remember**: Lost passwords = lost files (no recovery possible)
-
-### File Handling Best Practices
-- **Test decryption** immediately after encryption
-- **Backup important files** before encryption
-- **Use "Erase Traces"** for sensitive data
-- **Store encrypted files** in secure locations
-
-### System Security
-- **Keep system updated** for latest security patches
-- **Use antivirus software** (app may trigger false positives)
-- **Secure your computer** with login passwords
-- **Regular backups** of encrypted files
-
-## 📝 License & Legal
-
-This project is licensed under the **MIT License** - see the `LICENSE` file for details.
-
-### Third-Party Licenses
-- **Electron**: MIT License
-- **React**: MIT License
-- **Node.js**: Node.js License (MIT-style)
+### Performance Tips
+- **Large files**: The application can handle files up to several GB
+- **Batch operations**: Use the file manager for multiple files
+- **Compression**: Enable compression for better storage efficiency
+- **Memory usage**: Close other applications for very large files
 
 ## 🤝 Contributing
 
-### Development Setup
-1. **Fork the repository**
-2. **Create feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make changes** and test thoroughly
-4. **Follow code style** (see `DEVELOPMENT.md`)
-5. **Submit Pull Request** with clear description
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-### Code Standards
-- Use ESLint configuration
-- Include error handling
-- Add comments for complex logic
-- Test on Windows, Linux, and macOS if possible
+### Development Guidelines
+- Follow Rust best practices and idioms
+- Use TypeScript for frontend code
+- Write comprehensive tests
+- Follow security-first principles
+- Add appropriate dark humor to new features
 
-### Bug Reports
-Please include:
-- Operating system and version
-- Node.js version (`node --version`)
-- Steps to reproduce
-- Error messages
-- Screenshots if relevant
+## 📄 License
 
-## 🎭 Acknowledgments
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- **Dark humor** that keeps us coding through existential dread
-- **Security community** for encryption best practices
-- **Open source contributors** making desktop apps possible
-- **Coffee** ☕ and **late-night coding sessions** 🌙
+## 🙏 Acknowledgments
+
+- **Tauri Team**: For the amazing cross-platform framework
+- **Rust Crypto Team**: For the excellent cryptographic libraries
+- **React Team**: For the powerful frontend framework
+- **Dark Humor Community**: For inspiration on making security fun
+
+## 🔗 Links
+
+- **Repository**: https://github.com/drdeeks/File-Encryptor
+- **Issues**: https://github.com/drdeeks/File-Encryptor/issues
+- **Discussions**: https://github.com/drdeeks/File-Encryptor/discussions
+- **Releases**: https://github.com/drdeeks/File-Encryptor/releases
+
+## 📊 Version History
+
+### v2.0.0 (Current)
+- Complete rewrite with Tauri and Rust
+- Modern React TypeScript frontend
+- Enhanced security with AES-256-GCM
+- Improved decryption capabilities
+- Dark humor integration
+- Cross-platform native performance
+
+### v1.0.0 (Legacy)
+- Original Electron-based implementation
+- Basic AES-256-CBC encryption
+- Simple React frontend
 
 ---
 
-## ⚠️ Important Reminders
-
-- **🔑 Password Management**: This app does NOT store passwords. Write them down securely!
-- **🔒 Encryption Strength**: AES-256 is currently unbreakable with proper implementation
-- **💾 File Backups**: Always backup important files before encryption
-- **🛡️ Security**: Keep your system updated and use strong passwords
-
----
-
-**Encrypt wisely, laugh darkly, and may your passwords be ever in your favor. 🔒💀**
-
-*Built by developers who understand that sometimes you need to encrypt your feelings too.*
+**Remember**: Your secrets are only as safe as your password. Choose wisely, and may the dark humor be with you! 😈🔐
