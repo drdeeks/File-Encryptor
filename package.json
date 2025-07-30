@@ -1,154 +1,46 @@
 {
-  "name": "File-Encryptor",
-  "version": "1.0.0",
-  "description": "A file encryptor with a side of dark humor. Because why not make securing your files a little more entertaining?",
-  "main": "src/main.js",
-  "homepage": "./",
+  "name": "file-encryptor-frontend",
+  "version": "2.0.0",
+  "description": "A secure file encryption application with dark humor - Tauri Edition Frontend",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "npm run build && electron-forge start",
-    "build": "webpack --mode production",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "dev": "electron-forge start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf dist build out",
-    "make-win": "electron-forge make --platform=win32",
-    "make-linux": "electron-forge make --platform=linux",
-    "make-mac": "electron-forge make --platform=darwin",
-    "publish": "electron-forge publish"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix"
   },
-  "keywords": [
-    "encryption",
-    "files",
-    "security",
-    "humor",
-    "electron",
-    "react",
-    "gui"
-  ],
-  "author": "drdeeks",
-  "license": "MIT",
   "dependencies": {
-    "electron-is-dev": "^3.0.1",
+    "@tauri-apps/api": "^1.5.0",
+    "@tauri-apps/plugin-dialog": "^1.0.0",
+    "@tauri-apps/plugin-fs": "^1.0.0",
+    "@tauri-apps/plugin-shell": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.263.1",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.4",
-    "@babel/preset-react": "^7.24.0",
-    "@electron-forge/cli": "^7.8.1",
-    "@electron-forge/maker-deb": "^7.8.1",
-    "@electron-forge/maker-dmg": "^7.8.1",
-    "@electron-forge/maker-rpm": "^7.8.1",
-    "@electron-forge/maker-squirrel": "^7.8.1",
-    "@electron-forge/maker-zip": "^7.8.1",
-    "babel-loader": "^9.1.3",
-    "copyfiles": "^2.4.1",
-    "css-loader": "^7.1.2",
-    "electron": "^36.3.1",
-    "eslint-plugin-react": "^7.37.5",
-    "react-scripts": "^5.0.1",
-    "style-loader": "^4.0.0",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "name": "File Encryptor GUI",
-        "executableName": "File-Encryptor",
-        "productName": "File Encryptor GUI",
-        "ignore": [
-          "/src/gui",
-          "/webpack.config.js",
-          "/run-encryptor.bat",
-          "/DEVELOPMENT.md",
-          "/.eslintrc.js",
-          "/.prettierrc"
-        ],
-        "win32metadata": {
-          "CompanyName": "drdeeks",
-          "FileDescription": "Secure file encryption with dark humor",
-          "OriginalFilename": "File-Encryptor.exe",
-          "ProductName": "File Encryptor GUI",
-                      "InternalName": "File-Encryptor"
-        }
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "File_Encryptor",
-            "authors": "drdeeks",
-            "description": "Secure file encryption with a side of dark humor",
-                          "setupExe": "File-Encryptor-Setup.exe",
-            "noMsi": true
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin",
-            "linux"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {
-            "options": {
-              "maintainer": "drdeeks",
-              "homepage": "https://github.com/drdeeks/File-Encryptor",
-              "description": "Secure file encryption with dark humor",
-              "categories": [
-                "Utility",
-                "Security"
-              ]
-            }
-          }
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {
-            "options": {
-              "license": "MIT",
-              "homepage": "https://github.com/drdeeks/File-Encryptor",
-              "description": "Secure file encryption with dark humor",
-              "categories": [
-                "Utility",
-                "Security"
-              ]
-            }
-          }
-        },
-        {
-          "name": "@electron-forge/maker-dmg",
-          "config": {
-            "name": "File Encryptor GUI",
-            "title": "File Encryptor GUI ${version}",
-            "contents": [
-              {
-                "x": 130,
-                "y": 220,
-                "type": "file",
-                "path": "./out/File Encryptor GUI-darwin-x64/File Encryptor GUI.app"
-              },
-              {
-                "x": 410,
-                "y": 220,
-                "type": "link",
-                "path": "/Applications"
-              }
-            ]
-          }
-        }
-      ]
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/drdeeks/File-Encryptor.git"
-  },
-  "bugs": {
-    "url": "https://github.com/drdeeks/File-Encryptor/issues"
+    "@tauri-apps/cli": "^1.5.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   }
 }
