@@ -1,2 +1,2 @@
-customtkinter
 cryptography
+argon2-cffi
